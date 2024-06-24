@@ -33,7 +33,7 @@ if ingredients_list:
         st.subheader(f'{fruit_chosen} Nutritional Information')
         # New section to display fruityvice nutrition information
         search_on =pd_df.loc[pd_df['FRUIT_NAME']==fruit_chosen, 'SEARCH_ON'].iloc[0]
-        fv_response = requests.get("https://fruityvice.com/api/fruit/"+fruit_chosen)
+        fv_response = requests.get("https://fruityvice.com/api/fruit/"+search_on)
         fv_df = st.dataframe(data=fv_response.json(),use_container_width=True)
     insert_stmt="""insert into smoothies.public.orders(ingredients,name_on_order) values
     ('"""+ingredients_string+"""','"""+name_on_order+"""')"""
